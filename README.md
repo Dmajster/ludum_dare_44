@@ -6,12 +6,12 @@
 
 ## Required stuff
 
-* Unity 2019.1 ([link to the hub download](unityhub://2019.1.0f2/292b93d75a2c))
-* ([Steam](https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe)) and ([SteamVR](steam://run/250820))
+* Unity 2019.1 ([link to the hub download](https://unity3d.com/ru/unity/whats-new/2019.1.0))
+* [Steam](https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe) and [SteamVR](https://store.steampowered.com/app/250820/SteamVR/)
 * HTC VIVE used for development (should support other headsets)
-* 1-4 Xbox 360 controllers (using ([XInputDotNet](https://github.com/speps/XInputDotNet)))
+* 1-4 Xbox 360 controllers, using [XInputDotNet](https://github.com/speps/XInputDotNet)
 * VR capable PC
-
+j
 ## Supported platform
 
 * Windows
