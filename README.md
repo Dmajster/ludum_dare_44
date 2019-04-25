@@ -11,7 +11,7 @@
 * HTC VIVE used for development (should support other headsets)
 * 1-4 Xbox 360 controllers, using [XInputDotNet](https://github.com/speps/XInputDotNet)
 * VR capable PC
-j
+
 ## Supported platform
 
 * Windows
