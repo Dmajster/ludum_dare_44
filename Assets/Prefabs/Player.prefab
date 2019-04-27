@@ -95,8 +95,8 @@ MonoBehaviour:
   PlayerIndex: 0
   Rigidbody: {fileID: 0}
   StrafingSpeed: 0.5
-  GravityStrength: -0.1
-  JumpStrength: 1.2
+  GravityStrength: -0.06
+  JumpStrength: 1
   CanJump: 0
   Gravity: 0
   StrafeTarget: {x: 0, y: 0, z: 0}

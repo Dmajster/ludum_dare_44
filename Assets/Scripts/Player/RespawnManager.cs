@@ -18,7 +18,6 @@ namespace Assets.Scripts.Player
                 playerData.Instance.transform.position = RespawnPoints[0].position;
 
             }
-            
         }
     }
 }
