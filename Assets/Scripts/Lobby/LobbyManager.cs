@@ -9,6 +9,7 @@ namespace Assets.Scripts.Lobby
     {
         public Transform SpawnPoint;
         public GameObject PlayerPrefab;
+        public Camera MovementCamera;
 
         private void FixedUpdate()
         {
@@ -27,7 +28,9 @@ namespace Assets.Scripts.Lobby
                             Index = playerIndex
                         };
 
-                        playerData.Instance.GetComponent<PlayerController>().PlayerIndex = playerIndex;
+                        var playerController = playerData.Instance.GetComponent<PlayerController>();
+                        playerController.PlayerIndex = playerIndex;
+                        playerController.MovementCamera = MovementCamera;
 
                         PlayerManager.Instance.Players.Add(playerData);
                     }

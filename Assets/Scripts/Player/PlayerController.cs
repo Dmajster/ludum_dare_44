@@ -11,6 +11,8 @@ namespace Assets.Scripts.Player
 
         public PlayerIndex PlayerIndex;
 
+        public Camera MovementCamera;
+
         public Rigidbody Rigidbody;
 
         public float StrafingSpeed;
@@ -42,7 +44,7 @@ namespace Assets.Scripts.Player
             State = GamePad.GetState(PlayerIndex);
 
 
-            var rightVector = Camera.main.transform.right;
+            var rightVector = MovementCamera.transform.right;
             var forwardVector = Vector3.Cross(rightVector, Vector3.up);
 
             var thumbStick = new Vector2(State.ThumbSticks.Left.X, State.ThumbSticks.Left.Y);
