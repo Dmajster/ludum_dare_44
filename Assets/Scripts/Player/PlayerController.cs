@@ -11,8 +11,6 @@ namespace Assets.Scripts.Player
 
         public PlayerIndex PlayerIndex;
 
-        public Vector3 Strafing;
-
         public Rigidbody Rigidbody;
 
         public float StrafingSpeed;
@@ -22,6 +20,11 @@ namespace Assets.Scripts.Player
         public bool CanJump;
 
         public float Gravity;
+
+        public Vector3 StrafeTarget;
+        public Vector3 Strafe;
+
+        public AnimationCurve ThumbstickCurve;
 
         private void Start()
         {
@@ -39,11 +42,20 @@ namespace Assets.Scripts.Player
             State = GamePad.GetState(PlayerIndex);
 
 
+            var rightVector = Camera.main.transform.right;
+            var forwardVector = Vector3.Cross(rightVector, Vector3.up);
 
-            var strafingNormal = new Vector3(State.ThumbSticks.Left.X, 0, State.ThumbSticks.Left.Y);
-            Strafing = strafingNormal * StrafingSpeed * Time.deltaTime;
+            var thumbStick = new Vector2(State.ThumbSticks.Left.X, State.ThumbSticks.Left.Y);
 
-            movement += Strafing;
+            StrafeTarget = forwardVector * thumbStick.y +
+                            rightVector * thumbStick.x;
+
+            StrafeTarget *= ThumbstickCurve.Evaluate(StrafeTarget.magnitude * StrafingSpeed);
+            StrafeTarget *= Time.deltaTime;
+
+            Strafe = Vector3.Lerp(Strafe, StrafeTarget, 0.5f);
+
+            movement += Strafe;
 
             CanJump = Physics.Raycast(transform.position, Vector3.down, transform.localScale.y + 0.01f);
             Debug.DrawRay(transform.position, Vector3.down * (transform.localScale.y + 0.001f ));

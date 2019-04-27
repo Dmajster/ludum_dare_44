@@ -93,12 +93,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 0
-  Strafing: {x: 0, y: 0, z: 0}
   Rigidbody: {fileID: 0}
-  StrafingSpeed: 0.4
+  StrafingSpeed: 0.5
   GravityStrength: -0.1
   JumpStrength: 1.2
+  CanJump: 0
   Gravity: 0
+  StrafeTarget: {x: 0, y: 0, z: 0}
+  Strafe: {x: 0, y: 0, z: 0}
+  ThumbstickCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!136 &5426566209197889362
 CapsuleCollider:
   m_ObjectHideFlags: 0

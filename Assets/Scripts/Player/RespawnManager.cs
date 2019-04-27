@@ -11,7 +11,14 @@ namespace Assets.Scripts.Player
 
         public void Respawn(PlayerIndex playerIndex)
         {
-            PlayerManager.Instance.GetPlayer(playerIndex).Instance.transform.position = RespawnPoints[0].position;
+            var playerData = PlayerManager.Instance.GetPlayer(playerIndex);
+
+            if (playerData != null)
+            {
+                playerData.Instance.transform.position = RespawnPoints[0].position;
+
+            }
+            
         }
     }
 }
