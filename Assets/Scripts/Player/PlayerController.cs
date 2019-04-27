@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets.Scripts.Player
-{
+namespace Assets.Scripts.Player {
     [RequireComponent(typeof(Rigidbody), typeof(GamePadState))]
-    public class PlayerController : MonoBehaviour
-    {
+    public class PlayerController : MonoBehaviour {
         public GamePadState State;
         public GamePadState PrevState;
 
@@ -28,16 +26,20 @@ namespace Assets.Scripts.Player
 
         public AnimationCurve ThumbstickCurve;
 
-        private void Start()
-        {
+        public GameObject VictimHat;
+
+        private void Start() {
             Rigidbody = GetComponent<Rigidbody>();
             Rigidbody.isKinematic = true;
 
             Debug.Log(transform.localScale.y);
         }
 
-        private void FixedUpdate()
-        {
+        public void SetVictimHat() {
+            VictimHat.transform.SetParent(gameObject.transform);
+        }
+
+        private void FixedUpdate() {
             var movement = Vector3.zero;
 
             PrevState = State;
@@ -62,17 +64,13 @@ namespace Assets.Scripts.Player
             CanJump = Physics.Raycast(transform.position, Vector3.down, transform.localScale.y + 0.01f);
             Debug.DrawRay(transform.position, Vector3.down * (transform.localScale.y + 0.001f));
 
-            if (CanJump)
-            {
+            if (CanJump) {
                 Gravity = 0;
 
-                if (State.Buttons.A == ButtonState.Pressed)
-                {
+                if (State.Buttons.A == ButtonState.Pressed) {
                     Gravity = JumpStrength * Time.deltaTime;
                 }
-            }
-            else
-            {
+            } else {
                 Gravity += GravityStrength * Time.deltaTime;
             }
 
@@ -81,15 +79,13 @@ namespace Assets.Scripts.Player
             Rigidbody.transform.position += movement;
 
 
-            if (State.Buttons.B == ButtonState.Pressed)
-            {
+            if (State.Buttons.B == ButtonState.Pressed) {
                 Kill();
             }
 
         }
 
-        public void Kill()
-        {
+        public void Kill() {
             RespawnManager.Instance.Respawn(PlayerIndex);
         }
     }

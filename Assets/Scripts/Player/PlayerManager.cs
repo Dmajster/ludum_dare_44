@@ -5,30 +5,33 @@ using Assets.Scripts.Abstractions;
 using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets.Scripts.Player
-{
+namespace Assets.Scripts.Player {
+
+    public enum PlayerStatus {
+        kDie,
+        kAlive
+    }
     [Serializable]
-    public class PlayerData
-    {
+    public class PlayerData {
         public PlayerIndex Index;
         public GameObject Instance;
-
+        public PlayerStatus PlayerStatus;
         public PlayerController Controller => Instance.GetComponent<PlayerController>();
     }
 
     [Serializable]
-    public class PlayerManager : Singleton<PlayerManager>
-    {
+    public class PlayerManager : Singleton<PlayerManager> {
         public List<PlayerData> Players = new List<PlayerData>();
 
-        public PlayerData GetPlayer(PlayerIndex playerIndex)
-        {
+        public PlayerData GetPlayer(PlayerIndex playerIndex) {
             return Players.FirstOrDefault(playerData => playerData.Index == playerIndex);
         }
 
-        public PlayerData GetPlayer(GameObject playerInstance)
-        {
+        public PlayerData GetPlayer(GameObject playerInstance) {
             return Players.FirstOrDefault(playerData => playerData.Instance == playerInstance);
+        }
+        public void SetPlayerAsVictim(int victimIndex) {
+            Players[victimIndex].Controller.SetVictimHat();
         }
     }
 }

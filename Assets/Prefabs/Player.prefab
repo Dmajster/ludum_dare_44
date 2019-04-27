@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerIndex: 0
+  MovementCamera: {fileID: 0}
   Rigidbody: {fileID: 0}
   StrafingSpeed: 0.5
   GravityStrength: -0.06
@@ -125,6 +126,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  VictimHat: {fileID: 4049082119133363153, guid: f55cf67608db9964384aad94b25cb965,
+    type: 3}
 --- !u!136 &5426566209197889362
 CapsuleCollider:
   m_ObjectHideFlags: 0
