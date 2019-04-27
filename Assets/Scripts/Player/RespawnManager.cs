@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Assets.Scripts.Abstractions;
+﻿using Assets.Scripts.Abstractions;
+using System.Collections.Generic;
 using UnityEngine;
 using XInputDotNetPure;
 
@@ -7,7 +7,7 @@ namespace Assets.Scripts.Player
 {
     public class RespawnManager : Singleton<RespawnManager>
     {
-        public List<Transform> RespawnPoints = new List<Transform>();
+        public List<GameObject> RespawnPoints = new List<GameObject>();
 
         public void Respawn(PlayerIndex playerIndex)
         {
@@ -15,9 +15,13 @@ namespace Assets.Scripts.Player
 
             if (playerData != null)
             {
-                playerData.Instance.transform.position = RespawnPoints[0].position;
-
+                playerData.Instance.transform.position = RespawnPoints[playerData.RespawnIndex].GetComponent<Checkpoint>().RespawnPoint.transform.position;
             }
+        }
+
+        public int GetIndex(GameObject instance)
+        {
+            return RespawnPoints.IndexOf(instance);
         }
     }
 }

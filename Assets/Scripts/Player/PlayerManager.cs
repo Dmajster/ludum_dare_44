@@ -7,16 +7,27 @@ using XInputDotNetPure;
 
 namespace Assets.Scripts.Player {
 
-    public enum PlayerStatus {
-        kDie,
-        kAlive
+    public enum PlayerRole
+    {
+        Saint,
+        Naughty
     }
+
+    public enum PlayerStatus {
+        Dead,
+        Alive
+    }
+
     [Serializable]
     public class PlayerData {
         public PlayerIndex Index;
         public GameObject Instance;
         public PlayerStatus PlayerStatus;
+        public PlayerRole PlayerRole;
+        public int RespawnIndex;
+
         public PlayerController Controller => Instance.GetComponent<PlayerController>();
+        
     }
 
     [Serializable]

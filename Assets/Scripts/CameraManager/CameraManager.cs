@@ -91,13 +91,23 @@ namespace Assets.Scripts.CameraManager
         public void ShiftNext()
         {
             Debug.Log("Next Scene");
-            CurrentCameraShift++;
+            
+
+            if (CurrentCameraShift < CameraShifts.Length )
+            {
+                CurrentCameraShift++;
+            }
+
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }
         public void ShiftPrevious()
         {
             Debug.Log("Previous Scene");
-            CurrentCameraShift--;
+            if (CurrentCameraShift > 0)
+            {
+                CurrentCameraShift--;
+            }
+            
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }
     }

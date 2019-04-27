@@ -19,7 +19,7 @@ namespace Assets.Scripts.Lobby {
                         var playerData = new PlayerData {
                             Instance = Instantiate(PlayerPrefab, SpawnPoint.position, Quaternion.identity),
                             Index = playerIndex,
-                            PlayerStatus = PlayerStatus.kAlive
+                            PlayerStatus = PlayerStatus.Alive
                         };
 
                         var playerController = playerData.Instance.GetComponent<PlayerController>();
