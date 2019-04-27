@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets.Scenes
+namespace Assets.Scripts.Player
 {
-
     [RequireComponent(typeof(CharacterController),typeof(GamePadState))]
-    public class Joystick : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         public GamePadState State;
         public GamePadState PrevState;
