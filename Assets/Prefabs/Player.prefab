@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5426566209197889361}
   - component: {fileID: 5426566209197889366}
   - component: {fileID: 5426566209197889362}
-  - component: {fileID: 5426566209197889365}
+  - component: {fileID: -9189311931143628837}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,9 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66db6ba24e3569244a35d19dcc44e201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterController: {fileID: 0}
   PlayerIndex: 0
   Strafing: {x: 0, y: 0, z: 0}
+  Rigidbody: {fileID: 0}
   StrafingSpeed: 0.4
   GravityStrength: -0.1
   JumpStrength: 1.2
@@ -113,21 +113,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &5426566209197889365
-CharacterController:
+--- !u!54 &-9189311931143628837
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5426566209197889363}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.001
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

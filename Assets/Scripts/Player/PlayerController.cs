@@ -3,28 +3,32 @@ using XInputDotNetPure;
 
 namespace Assets.Scripts.Player
 {
-    [RequireComponent(typeof(CharacterController),typeof(GamePadState))]
+    [RequireComponent(typeof(Rigidbody),typeof(GamePadState))]
     public class PlayerController : MonoBehaviour
     {
         public GamePadState State;
         public GamePadState PrevState;
 
-
-        public CharacterController CharacterController;
-
         public PlayerIndex PlayerIndex;
 
         public Vector3 Strafing;
 
-        public float StrafingSpeed = 0.1f;
-        public float GravityStrength = -9.81f;
-        public float JumpStrength = 20f;
+        public Rigidbody Rigidbody;
+
+        public float StrafingSpeed;
+        public float GravityStrength;
+        public float JumpStrength;
+
+        public bool CanJump;
 
         public float Gravity;
 
         private void Start()
         {
-            CharacterController = GetComponent<CharacterController>();
+            Rigidbody = GetComponent<Rigidbody>();
+            Rigidbody.isKinematic = true;
+            
+            Debug.Log(transform.localScale.y);
         }
 
         private void FixedUpdate()
@@ -41,7 +45,10 @@ namespace Assets.Scripts.Player
 
             movement += Strafing;
 
-            if (CharacterController.isGrounded)
+            CanJump = Physics.Raycast(transform.position, Vector3.down, transform.localScale.y + 0.01f);
+            Debug.DrawRay(transform.position, Vector3.down * (transform.localScale.y + 0.001f ));
+
+            if (CanJump)
             {
                 Gravity = 0;
 
@@ -53,11 +60,11 @@ namespace Assets.Scripts.Player
             else
             {
                 Gravity += GravityStrength * Time.deltaTime;
-                movement += new Vector3(0, Gravity, 0);
             }
 
+            movement += new Vector3(0, Gravity, 0);
 
-            CharacterController.Move(movement);
+            Rigidbody.transform.position += movement;
             
         }
     }
