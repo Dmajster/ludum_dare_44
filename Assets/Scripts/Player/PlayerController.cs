@@ -30,7 +30,6 @@ namespace Assets.Scripts.Player {
 
         private void Start() {
             Rigidbody = GetComponent<Rigidbody>();
-            Rigidbody.isKinematic = true;
 
             Debug.Log(transform.localScale.y);
         }
