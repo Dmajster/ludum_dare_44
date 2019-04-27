@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.ludum_dare_44.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Work\\Personal\\ludum_dare_44\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "ludum_dare_44 [Testing]"
+        }
+      }
+    }
+  ]
+}
