@@ -65,7 +65,18 @@ namespace Assets.Scripts.Player
             movement += new Vector3(0, Gravity, 0);
 
             Rigidbody.transform.position += movement;
-            
+
+
+            if (State.Buttons.B == ButtonState.Pressed)
+            {
+                Kill();
+            }
+
+        }
+
+        public void Kill()
+        {
+            RespawnManager.Instance.Respawn(PlayerIndex);
         }
     }
 }

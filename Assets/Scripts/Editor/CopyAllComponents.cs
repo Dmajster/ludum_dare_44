@@ -13,12 +13,12 @@ public class ComponentsCopier : EditorWindow {
 
     static Component[] copiedComponents;
 
-    [MenuItem("GameObject/Copy all components %&C")]
+    [MenuItem("Instance/Copy all components %&C")]
     static void Copy() {
         copiedComponents = Selection.activeGameObject.GetComponents<Component>();
     }
 
-    [MenuItem("GameObject/Paste all components %&P")]
+    [MenuItem("Instance/Paste all components %&P")]
     static void Paste() {
         foreach (var targetGameObject in Selection.gameObjects) {
             if (!targetGameObject || copiedComponents == null) continue;

@@ -10,8 +10,6 @@ namespace Assets.Scripts.Lobby
         public Transform SpawnPoint;
         public GameObject PlayerPrefab;
 
-        public Dictionary<PlayerIndex, GameObject> Players = new Dictionary<PlayerIndex, GameObject>();
-
         private void FixedUpdate()
         {
             for (var i = 0; i < 4; i++)
@@ -21,13 +19,18 @@ namespace Assets.Scripts.Lobby
 
                 if (state.IsConnected)
                 {
-                    if (!Players.ContainsKey(playerIndex))
+                    if (PlayerManager.Instance.GetPlayer(playerIndex) == null)
                     {
-                        var newPlayer = Instantiate(PlayerPrefab, SpawnPoint.position, Quaternion.identity);
-                        Players.Add(playerIndex, newPlayer );
-                    }
+                        var playerData = new PlayerData
+                        {
+                            Instance = Instantiate(PlayerPrefab, SpawnPoint.position, Quaternion.identity),
+                            Index = playerIndex
+                        };
 
-                    Players[playerIndex].GetComponent<PlayerController>().PlayerIndex = playerIndex;
+                        playerData.Instance.GetComponent<PlayerController>().PlayerIndex = playerIndex;
+
+                        PlayerManager.Instance.Players.Add(playerData);
+                    }
                 }
             }
         }
