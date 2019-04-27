@@ -72,8 +72,8 @@ namespace Assets.Scripts.CameraManager
 
             Camera.transform.position = transform.position + Camera.transform.forward * -CurrentDistance;
 
-            Camera.transform.eulerAngles =
-                Vector3.Slerp(Camera.transform.eulerAngles, TargetEulerAngles, Time.deltaTime);
+            Camera.transform.eulerAngles = TargetEulerAngles;
+                //Vector3.Slerp(Camera.transform.eulerAngles, TargetEulerAngles, Time.deltaTime);
 
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }

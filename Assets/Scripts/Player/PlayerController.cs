@@ -3,7 +3,7 @@ using XInputDotNetPure;
 
 namespace Assets.Scripts.Player
 {
-    [RequireComponent(typeof(Rigidbody),typeof(GamePadState))]
+    [RequireComponent(typeof(Rigidbody), typeof(GamePadState))]
     public class PlayerController : MonoBehaviour
     {
         public GamePadState State;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Player
         {
             Rigidbody = GetComponent<Rigidbody>();
             Rigidbody.isKinematic = true;
-            
+
             Debug.Log(transform.localScale.y);
         }
 
@@ -58,7 +58,7 @@ namespace Assets.Scripts.Player
             movement += Strafe;
 
             CanJump = Physics.Raycast(transform.position, Vector3.down, transform.localScale.y + 0.01f);
-            Debug.DrawRay(transform.position, Vector3.down * (transform.localScale.y + 0.001f ));
+            Debug.DrawRay(transform.position, Vector3.down * (transform.localScale.y + 0.001f));
 
             if (CanJump)
             {
