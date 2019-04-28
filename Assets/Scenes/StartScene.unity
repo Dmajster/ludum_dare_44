@@ -147,7 +147,6 @@ MonoBehaviour:
   hoverButton: {fileID: 73612079}
   DisableGameObjects:
   - {fileID: 5051361816099531823}
-  - {fileID: 5051361814683572217}
   - {fileID: 5051361814268018735}
 --- !u!4 &116619116 stripped
 Transform:
@@ -7139,7 +7138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5051361816099531823}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.1601067, y: 0.19, z: -5.046723}
+  m_LocalPosition: {x: 1.44, y: 0.19, z: -2.448}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5051361816099390451}

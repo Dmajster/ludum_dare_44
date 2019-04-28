@@ -4,10 +4,8 @@ using Assets.Scripts.Player;
 using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets.Scripts.CameraManager
-{
-    public class CameraManager : Singleton<CameraManager>
-    {
+namespace Assets.Scripts.CameraManager {
+    public class CameraManager : Singleton<CameraManager> {
         public Camera Camera;
 
         public float MinDistance = 0.5f;
@@ -36,16 +34,16 @@ namespace Assets.Scripts.CameraManager
                 Display.displays[2].Activate();
         }
 
-        public void Update()
-        {
+        public void Update() {
+            if (PlayerManager.Instance.Players != null) {
+                return;
+            }
             var center = Vector3.zero;
             var min = PlayerManager.Instance.Players[0].Instance.transform.position;
             var max = PlayerManager.Instance.Players[0].Instance.transform.position;
 
-            foreach (var playerData in PlayerManager.Instance.Players)
-            {
-                if (playerData.PlayerStatus != PlayerStatus.Alive)
-                {
+            foreach (var playerData in PlayerManager.Instance.Players) {
+                if (playerData.PlayerStatus != PlayerStatus.Alive) {
                     continue;
                 }
 
@@ -53,23 +51,19 @@ namespace Assets.Scripts.CameraManager
 
                 center += position;
 
-                if (position.x < min.x)
-                {
+                if (position.x < min.x) {
                     min.x = position.x;
                 }
 
-                if (position.z < min.z)
-                {
+                if (position.z < min.z) {
                     min.z = position.z;
                 }
 
-                if (position.x > max.x)
-                {
+                if (position.x > max.x) {
                     max.x = position.x;
                 }
 
-                if (position.z > max.z)
-                {
+                if (position.z > max.z) {
                     max.z = position.z;
                 }
             }
@@ -80,7 +74,7 @@ namespace Assets.Scripts.CameraManager
             CurrentCenter = Vector3.Slerp(CurrentCenter, TargetCenter, Time.deltaTime);
 
             transform.position = CurrentCenter;
-            
+
 
             DesiredDistance = Mathf.Max(0.5f, Vector3.Distance(min, max) * DistanceModifer) + 2 * BorderModifier;
 
@@ -89,36 +83,31 @@ namespace Assets.Scripts.CameraManager
             Camera.transform.position = transform.position + Camera.transform.forward * -CurrentDistance;
 
             Camera.transform.eulerAngles = TargetEulerAngles;
-                //Vector3.Slerp(Camera.transform.eulerAngles, TargetEulerAngles, Time.deltaTime);
+            //Vector3.Slerp(Camera.transform.eulerAngles, TargetEulerAngles, Time.deltaTime);
 
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }
 
-        public void ShiftNext()
-        {
+        public void ShiftNext() {
             Debug.Log("Next Scene");
-            
 
-            if (CurrentCameraShift < CameraShifts.Length )
-            {
+
+            if (CurrentCameraShift < CameraShifts.Length) {
                 CurrentCameraShift++;
             }
 
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }
-        public void ShiftPrevious()
-        {
+        public void ShiftPrevious() {
             Debug.Log("Previous Scene");
-            if (CurrentCameraShift > 0)
-            {
+            if (CurrentCameraShift > 0) {
                 CurrentCameraShift--;
             }
-            
+
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }
 
-        public void ShiftTo(int index)
-        {
+        public void ShiftTo(int index) {
             CurrentCameraShift = index;
             TargetEulerAngles = CameraShifts[index].CameraOffset.eulerAngles;
         }
