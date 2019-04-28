@@ -11,6 +11,8 @@ namespace Assets.Scripts.Lobby
         public GameObject PlayerPrefab;
         public Camera MovementCamera;
 
+        public Color[] PlayerColors = new Color[5];
+
         public bool KeyboardPlayerActive = false;
 
         private void FixedUpdate()
@@ -25,6 +27,9 @@ namespace Assets.Scripts.Lobby
 
                 var playerController = playerData.Instance.GetComponent<PlayerController>();
                 playerController.Input = new PlayerKeyboardInput();
+
+                playerController.GetComponent<MeshRenderer>().material.color =
+                    PlayerColors[PlayerManager.Instance.Players.Count];
 
                 playerController.MovementCamera = MovementCamera;
 
