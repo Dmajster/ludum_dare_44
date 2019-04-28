@@ -3,10 +3,8 @@ using Assets.Scripts.Player;
 using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets.Scripts.Lobby
-{
-    public class LobbyManager : MonoBehaviour
-    {
+namespace Assets.Scripts.Lobby {
+    public class LobbyManager : MonoBehaviour {
         public Transform SpawnPoint;
         public GameObject PlayerPrefab;
         public Camera MovementCamera;
@@ -15,12 +13,9 @@ namespace Assets.Scripts.Lobby
 
         public bool KeyboardPlayerActive = false;
 
-        private void FixedUpdate()
-        {
-            if (Input.GetButton("Jump") && !KeyboardPlayerActive)
-            {
-                var playerData = new PlayerData
-                {
+        private void FixedUpdate() {
+            if (Input.GetButton("Jump") && !KeyboardPlayerActive) {
+                var playerData = new PlayerData {
                     Instance = Instantiate(PlayerPrefab, SpawnPoint.position, Quaternion.identity),
                     PlayerStatus = PlayerStatus.Alive
                 };
@@ -39,17 +34,13 @@ namespace Assets.Scripts.Lobby
                 KeyboardPlayerActive = true;
             }
 
-            for (var i = 0; i < 4; i++)
-            {
-                var playerIndex = (PlayerIndex) i;
+            for (var i = 0; i < 4; i++) {
+                var playerIndex = (PlayerIndex)i;
                 var state = GamePad.GetState(playerIndex);
 
-                if (state.IsConnected)
-                {
-                    if (PlayerManager.Instance.GetPlayer(playerIndex) == null)
-                    {
-                        var playerData = new PlayerData
-                        {
+                if (state.IsConnected) {
+                    if (PlayerManager.Instance.GetPlayer(playerIndex) == null) {
+                        var playerData = new PlayerData {
                             Instance = Instantiate(PlayerPrefab, SpawnPoint.position, Quaternion.identity),
                             Index = playerIndex,
                             PlayerStatus = PlayerStatus.Alive
@@ -57,6 +48,8 @@ namespace Assets.Scripts.Lobby
 
                         var playerController = playerData.Instance.GetComponent<PlayerController>();
                         playerController.Input = new PlayerJoystickInput(playerIndex);
+
+                        playerController.GetComponent<MeshRenderer>().material.color = PlayerColors[PlayerManager.Instance.Players.Count];
 
                         playerController.MovementCamera = MovementCamera;
 
