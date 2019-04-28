@@ -11,8 +11,29 @@ namespace Assets.Scripts.Lobby
         public GameObject PlayerPrefab;
         public Camera MovementCamera;
 
+        public bool KeyboardPlayerActive = false;
+
         private void FixedUpdate()
         {
+            if (Input.GetButton("Jump") && !KeyboardPlayerActive)
+            {
+                var playerData = new PlayerData
+                {
+                    Instance = Instantiate(PlayerPrefab, SpawnPoint.position, Quaternion.identity),
+                    PlayerStatus = PlayerStatus.Alive
+                };
+
+                var playerController = playerData.Instance.GetComponent<PlayerController>();
+                playerController.Input = new PlayerKeyboardInput();
+
+                playerController.MovementCamera = MovementCamera;
+
+                PlayerManager.Instance.Players.Add(playerData);
+
+                RoundManager.Instance.StartRound();
+                KeyboardPlayerActive = true;
+            }
+
             for (var i = 0; i < 4; i++)
             {
                 var playerIndex = (PlayerIndex) i;
@@ -30,7 +51,8 @@ namespace Assets.Scripts.Lobby
                         };
 
                         var playerController = playerData.Instance.GetComponent<PlayerController>();
-                        playerController.PlayerIndex = playerIndex;
+                        playerController.Input = new PlayerJoystickInput(playerIndex);
+
                         playerController.MovementCamera = MovementCamera;
 
                         PlayerManager.Instance.Players.Add(playerData);

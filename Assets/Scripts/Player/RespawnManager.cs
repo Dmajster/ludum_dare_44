@@ -9,9 +9,9 @@ namespace Assets.Scripts.Player
     {
         public List<GameObject> RespawnPoints = new List<GameObject>();
 
-        public void Respawn(PlayerIndex playerIndex)
+        public void Respawn(GameObject player)
         {
-            var playerData = PlayerManager.Instance.GetPlayer(playerIndex);
+            var playerData = PlayerManager.Instance.GetPlayer(player);
 
             if (playerData != null)
             {
@@ -24,9 +24,9 @@ namespace Assets.Scripts.Player
             return RespawnPoints.IndexOf(instance);
         }
 
-        public void Spawn(PlayerIndex playerIndex, int index)
+        public void Spawn(GameObject player, int index)
         {
-            var playerData = PlayerManager.Instance.GetPlayer(playerIndex);
+            var playerData = PlayerManager.Instance.GetPlayer(player);
 
             if (playerData != null)
             {

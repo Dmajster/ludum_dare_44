@@ -6,13 +6,7 @@ namespace Assets.Scripts.Player
     [RequireComponent(typeof(Rigidbody), typeof(GamePadState))]
     public class PlayerController : MonoBehaviour
     {
-        public GamePadState State;
-        public GamePadState PrevState;
-
-        public PlayerIndex PlayerIndex;
-
         public Camera MovementCamera;
-
         public Rigidbody Rigidbody;
 
         public float StrafingSpeed;
@@ -27,6 +21,8 @@ namespace Assets.Scripts.Player
         public Vector3 Strafe;
 
         public AnimationCurve ThumbstickCurve;
+
+        public IPlayerInput Input;
 
         public GameObject VictimHat;
 
@@ -45,18 +41,11 @@ namespace Assets.Scripts.Player
         private void FixedUpdate()
         {
             var movement = Vector3.zero;
-
-            PrevState = State;
-            State = GamePad.GetState(PlayerIndex);
-
-
             var rightVector = MovementCamera.transform.right;
             var forwardVector = Vector3.Cross(rightVector, Vector3.up);
 
-            var thumbStick = new Vector2(State.ThumbSticks.Left.X, State.ThumbSticks.Left.Y);
-
-            StrafeTarget = forwardVector * thumbStick.y +
-                            rightVector * thumbStick.x;
+            StrafeTarget = forwardVector * Input.Vertical +
+                            rightVector * Input.Horizontal;
 
             StrafeTarget *= ThumbstickCurve.Evaluate(StrafeTarget.magnitude * StrafingSpeed);
             StrafeTarget *= Time.deltaTime;
@@ -72,7 +61,7 @@ namespace Assets.Scripts.Player
             {
                 Gravity = 0;
 
-                if (State.Buttons.A == ButtonState.Pressed)
+                if (Input.Jumping)
                 {
                     Gravity = JumpStrength * Time.deltaTime;
                 }
@@ -85,23 +74,16 @@ namespace Assets.Scripts.Player
             movement += new Vector3(0, Gravity, 0);
 
             Rigidbody.transform.position += movement;
-
-
-            if (State.Buttons.B == ButtonState.Pressed)
-            {
-                Kill();
-            }
-
         }
 
         public void Kill()
         {
-            var playerData = PlayerManager.Instance.GetPlayer(PlayerIndex);
+            var playerData = PlayerManager.Instance.GetPlayer(gameObject);
 
             if (playerData.LifesLeft > 0)
             {
                 playerData.LifesLeft--;
-                RespawnManager.Instance.Respawn(PlayerIndex);
+                RespawnManager.Instance.Respawn(gameObject);
             }
             else
             {
@@ -111,7 +93,7 @@ namespace Assets.Scripts.Player
 
         public void Spawn(int index)
         {
-            RespawnManager.Instance.Spawn(PlayerIndex, index);
+            RespawnManager.Instance.Spawn(gameObject, index);
         }
     }
 }
