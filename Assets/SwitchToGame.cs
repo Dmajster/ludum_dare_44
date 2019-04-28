@@ -16,9 +16,11 @@ namespace Valve.VR.InteractionSystem.Sample {
         }
 
         private void OnButtonDown(Hand hand) {
-            //foreach (var item in DisableGameObjects) {
-            //    item.SetActive(false);
-            //}
+            foreach (var item in DisableGameObjects) {
+                item.SetActive(false);
+            }
+            Destroy(DisableGameObjects[0]);
+            SceneManager.UnloadSceneAsync(0);
             SceneManager.LoadScene(1);
         }
 
