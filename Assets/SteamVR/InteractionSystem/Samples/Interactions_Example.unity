@@ -16856,7 +16856,7 @@ PrefabInstance:
     - target: {fileID: 9047538309682335791, guid: e5c065b6afa992d4b8fc60f19ec37519,
         type: 3}
       propertyPath: ThrustAmmount
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5c065b6afa992d4b8fc60f19ec37519, type: 3}
