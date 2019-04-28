@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets.Scripts.Player
-{
+namespace Assets.Scripts.Player {
     [RequireComponent(typeof(Rigidbody), typeof(GamePadState))]
-    public class PlayerController : MonoBehaviour
-    {
+    public class PlayerController : MonoBehaviour {
         public Camera MovementCamera;
         public Rigidbody Rigidbody;
 
@@ -26,20 +24,17 @@ namespace Assets.Scripts.Player
 
         public GameObject VictimHat;
 
-        private void Start()
-        {
+        private void Start() {
             Rigidbody = GetComponent<Rigidbody>();
 
             Debug.Log(transform.localScale.y);
         }
 
-        public void SetVictimHat()
-        {
+        public void SetVictimHat() {
             VictimHat.transform.SetParent(gameObject.transform);
         }
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() {
             var movement = Vector3.zero;
             var rightVector = MovementCamera.transform.right;
             var forwardVector = Vector3.Cross(rightVector, Vector3.up);
@@ -57,41 +52,36 @@ namespace Assets.Scripts.Player
             CanJump = Physics.Raycast(transform.position, Vector3.down, transform.localScale.y + 0.01f);
             Debug.DrawRay(transform.position, Vector3.down * (transform.localScale.y + 0.001f));
 
-            if (CanJump)
-            {
+            if (CanJump) {
                 Gravity = 0;
 
-                if (Input.Jumping)
-                {
+                if (Input.Jumping) {
                     Gravity = JumpStrength * Time.deltaTime;
                 }
-            }
-            else
-            {
+            } else {
                 Gravity += GravityStrength * Time.deltaTime;
             }
 
             movement += new Vector3(0, Gravity, 0);
             Rigidbody.transform.position += movement;
+
+            if (transform.position.y < 0.2) {
+                Kill();
+            }
         }
 
-        public void Kill()
-        {
+        public void Kill() {
             var playerData = PlayerManager.Instance.GetPlayer(gameObject);
 
-            if (playerData.LifesLeft > 0)
-            {
+            if (playerData.LifesLeft > 0) {
                 playerData.LifesLeft--;
                 RespawnManager.Instance.Respawn(gameObject);
-            }
-            else
-            {
+            } else {
                 playerData.PlayerStatus = PlayerStatus.Dead;
             }
         }
 
-        public void Spawn(int index)
-        {
+        public void Spawn(int index) {
             RespawnManager.Instance.Spawn(gameObject, index);
         }
     }
