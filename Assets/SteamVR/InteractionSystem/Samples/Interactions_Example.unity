@@ -5057,7 +5057,6 @@ GameObject:
   - component: {fileID: 422549643}
   - component: {fileID: 422549642}
   - component: {fileID: 422549641}
-  - component: {fileID: 422549640}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -5065,18 +5064,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &422549640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422549639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f589ccdcf53ed64881276149856c395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &422549641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5085,7 +5072,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422549639}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -5097,7 +5084,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422549639}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5144,7 +5131,7 @@ Transform:
   m_GameObject: {fileID: 422549639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.47272184, y: -0.2380256, z: -9.2528515}
-  m_LocalScale: {x: 100, y: 0.01, z: 100}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 28
@@ -5197,7 +5184,7 @@ GameObject:
   - component: {fileID: 466282008}
   m_Layer: 2
   m_Name: Checkpoint_3
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6538,7 +6525,7 @@ GameObject:
   - component: {fileID: 680928084}
   m_Layer: 2
   m_Name: Checkpoint_2
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19615,6 +19602,12 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 5426566209197889363, guid: fd94efe628f8f4b47abcc0c8a688685e,
     type: 3}
   MovementCamera: {fileID: 1008084000}
+  PlayerColors:
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
   KeyboardPlayerActive: 0
 --- !u!1 &1709452819
 GameObject:
@@ -34643,7 +34636,7 @@ GameObject:
   - component: {fileID: 8772566847784328851}
   m_Layer: 2
   m_Name: Checkpoint_1
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34753,7 +34746,7 @@ GameObject:
   - component: {fileID: 8772566848966065821}
   m_Layer: 2
   m_Name: Checkpoint_0
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

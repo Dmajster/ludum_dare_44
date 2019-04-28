@@ -35,6 +35,9 @@ namespace Assets.Scripts.Player {
         }
 
         private void FixedUpdate() {
+            if (transform.position.y < 0.4) {
+                Kill();
+            }
             var movement = Vector3.zero;
             var rightVector = MovementCamera.transform.right;
             var forwardVector = Vector3.Cross(rightVector, Vector3.up);
@@ -64,10 +67,6 @@ namespace Assets.Scripts.Player {
 
             movement += new Vector3(0, Gravity, 0);
             Rigidbody.transform.position += movement;
-
-            if (transform.position.y < 0.4) {
-                Kill();
-            }
         }
 
         public void Kill() {
