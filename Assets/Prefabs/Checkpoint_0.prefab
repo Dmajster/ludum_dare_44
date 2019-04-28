@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 8772566847433768312}
   - component: {fileID: 8772566847433768309}
   - component: {fileID: 8772566847433768308}
-  - component: {fileID: 8772566847433768315}
   - component: {fileID: 8772566847433768314}
   - component: {fileID: 8772566847433768313}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Checkpoint_0
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8772566847433768319}
-  m_LocalRotation: {x: -0, y: -0.013798799, z: -0, w: 0.9999049}
+  m_LocalRotation: {x: 0, y: -0.0137964, z: 0, w: 0.9999049}
   m_LocalPosition: {x: -7.641, y: 18.063732, z: -10.685}
   m_LocalScale: {x: 0.20000002, y: 0.02, z: 0.20000002}
   m_Children:
@@ -81,19 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8772566847433768315
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8772566847433768319}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &8772566847433768314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,7 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8772566848360272193}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

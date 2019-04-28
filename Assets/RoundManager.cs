@@ -8,6 +8,9 @@ namespace Assets
 {
     public class RoundManager : Singleton<RoundManager>
     {
+
+        public int StartingLifes = 2;
+
         public void StartRound()
         {
             var playerCount = PlayerManager.Instance.Players.Count;
@@ -34,7 +37,9 @@ namespace Assets
                 playerData.PlayerRole = i == naughty ? PlayerRole.Naughty : PlayerRole.Saint;
                 playerData.RespawnIndex = 0;
                 playerData.PlayerStatus = PlayerStatus.Alive;
+                playerData.LifesLeft = StartingLifes;
                 playerData.Controller.Spawn(0);
+                playerData.Controller.Gravity = 0;
             }
         }
 

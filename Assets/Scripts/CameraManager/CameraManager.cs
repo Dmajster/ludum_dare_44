@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Abstractions;
+﻿using System.Linq;
+using Assets.Scripts.Abstractions;
 using Assets.Scripts.Player;
 using UnityEngine;
 using XInputDotNetPure;
@@ -43,6 +44,11 @@ namespace Assets.Scripts.CameraManager
 
             foreach (var playerData in PlayerManager.Instance.Players)
             {
+                if (playerData.PlayerStatus != PlayerStatus.Alive)
+                {
+                    continue;
+                }
+
                 var position = playerData.Instance.transform.position;
 
                 center += position;
@@ -68,7 +74,7 @@ namespace Assets.Scripts.CameraManager
                 }
             }
 
-            center /= PlayerManager.Instance.Players.Count;
+            center /= PlayerManager.Instance.Players.Count(player => player.PlayerStatus == PlayerStatus.Alive);
 
             TargetCenter = center;
             CurrentCenter = Vector3.Slerp(CurrentCenter, TargetCenter, Time.deltaTime);

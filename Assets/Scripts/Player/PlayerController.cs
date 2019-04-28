@@ -96,7 +96,17 @@ namespace Assets.Scripts.Player
 
         public void Kill()
         {
-            RespawnManager.Instance.Respawn(PlayerIndex);
+            var playerData = PlayerManager.Instance.GetPlayer(PlayerIndex);
+
+            if (playerData.LifesLeft > 0)
+            {
+                playerData.LifesLeft--;
+                RespawnManager.Instance.Respawn(PlayerIndex);
+            }
+            else
+            {
+                playerData.PlayerStatus = PlayerStatus.Dead;
+            }
         }
 
         public void Spawn(int index)

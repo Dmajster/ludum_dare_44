@@ -26,6 +26,7 @@ namespace Assets.Scripts.Player {
         public PlayerStatus PlayerStatus;
         public PlayerRole PlayerRole;
         public int RespawnIndex;
+        public int LifesLeft;
 
         public PlayerController Controller => Instance.GetComponent<PlayerController>();
         
