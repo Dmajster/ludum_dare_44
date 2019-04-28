@@ -35,7 +35,7 @@ namespace Assets.Scripts.CameraManager {
         }
 
         public void Update() {
-            if (PlayerManager.Instance.Players != null) {
+            if (PlayerManager.Instance.Players == null || PlayerManager.Instance.Players.Count <= 0) {
                 return;
             }
             var center = Vector3.zero;
@@ -68,7 +68,14 @@ namespace Assets.Scripts.CameraManager {
                 }
             }
 
-            center /= PlayerManager.Instance.Players.Count(player => player.PlayerStatus == PlayerStatus.Alive);
+            var aliveCount = PlayerManager.Instance.Players.Count(player => player.PlayerStatus == PlayerStatus.Alive);
+
+            if (aliveCount == 0) {
+                RoundManager.Instance.StartRound();
+                return;
+            }
+
+            center /= aliveCount;
 
             TargetCenter = center;
             CurrentCenter = Vector3.Slerp(CurrentCenter, TargetCenter, Time.deltaTime);
