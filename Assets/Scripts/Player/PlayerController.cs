@@ -72,7 +72,6 @@ namespace Assets.Scripts.Player
             }
 
             movement += new Vector3(0, Gravity, 0);
-
             Rigidbody.transform.position += movement;
         }
 

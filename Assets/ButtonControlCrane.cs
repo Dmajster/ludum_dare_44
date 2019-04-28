@@ -12,10 +12,11 @@ namespace Valve.VR.InteractionSystem.Sample {
             }
         }
 
-
         private void OnButtonDown(Hand hand) {
-            var anim = CraneTop.GetComponent<Animator>();
-            anim.Play("crane_rotate");
+            var anim = CraneTop.GetComponent<Animation>();
+            if (!anim.isPlaying) {
+                anim.Play();
+            }
         }
 
     }
