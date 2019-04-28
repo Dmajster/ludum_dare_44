@@ -65,7 +65,7 @@ namespace Assets.Scripts.Player {
             movement += new Vector3(0, Gravity, 0);
             Rigidbody.transform.position += movement;
 
-            if (transform.position.y < 0.2) {
+            if (transform.position.y < 0.4) {
                 Kill();
             }
         }
@@ -78,6 +78,7 @@ namespace Assets.Scripts.Player {
                 RespawnManager.Instance.Respawn(gameObject);
             } else {
                 playerData.PlayerStatus = PlayerStatus.Dead;
+                gameObject.SetActive(false);
             }
         }
 

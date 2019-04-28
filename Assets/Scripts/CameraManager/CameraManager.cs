@@ -98,7 +98,6 @@ namespace Assets.Scripts.CameraManager {
         public void ShiftNext() {
             Debug.Log("Next Scene");
 
-
             if (CurrentCameraShift < CameraShifts.Length) {
                 CurrentCameraShift++;
             }

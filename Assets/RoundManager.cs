@@ -4,23 +4,19 @@ using Assets.Scripts.Player;
 using UnityEngine;
 using XInputDotNetPure;
 
-namespace Assets
-{
-    public class RoundManager : Singleton<RoundManager>
-    {
+namespace Assets {
+    public class RoundManager : Singleton<RoundManager> {
 
         public int StartingLifes = 2;
 
-        public void StartRound()
-        {
+        public void StartRound() {
             var playerCount = PlayerManager.Instance.Players.Count;
 
-            if (playerCount == 0)
-            {
+            if (playerCount == 0) {
                 Debug.LogWarning($"Player count {playerCount}");
                 return;
             }
-            
+
             //Find naughty player
             var naughty = Random.Range(0, playerCount);
 
@@ -30,10 +26,9 @@ namespace Assets
             CameraManager.Instance.ShiftTo(0);
 
             //Set roles to all players
-            for (var i = 0; i < playerCount; i++)
-            {
+            for (var i = 0; i < playerCount; i++) {
                 var playerData = PlayerManager.Instance.Players[i];
-
+                playerData.Controller.gameObject.SetActive(true);
                 playerData.PlayerRole = i == naughty ? PlayerRole.Naughty : PlayerRole.Saint;
                 playerData.RespawnIndex = 0;
                 playerData.PlayerStatus = PlayerStatus.Alive;
@@ -43,8 +38,7 @@ namespace Assets
             }
         }
 
-        public void EndRound()
-        {
+        public void EndRound() {
             StartRound();
         }
     }

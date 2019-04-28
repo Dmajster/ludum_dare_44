@@ -13,7 +13,7 @@ namespace Assets
 
             var playerData = PlayerManager.Instance.GetPlayer(other.gameObject);
 
-            if (playerData.RespawnIndex < index)
+            if (playerData?.RespawnIndex < index)
             {
                 playerData.RespawnIndex = index;
             }
