@@ -110,5 +110,11 @@ namespace Assets.Scripts.CameraManager
             
             TargetEulerAngles = CameraShifts[CurrentCameraShift].CameraOffset.eulerAngles;
         }
+
+        public void ShiftTo(int index)
+        {
+            CurrentCameraShift = index;
+            TargetEulerAngles = CameraShifts[index].CameraOffset.eulerAngles;
+        }
     }
 }

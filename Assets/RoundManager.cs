@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Abstractions;
+using Assets.Scripts.CameraManager;
 using Assets.Scripts.Player;
 using UnityEngine;
 using XInputDotNetPure;
@@ -16,19 +17,30 @@ namespace Assets
                 Debug.LogWarning($"Player count {playerCount}");
                 return;
             }
-
+            
             //Find naughty player
             var naughty = Random.Range(0, playerCount);
+
+            Debug.Log($"Player count {playerCount}, {naughty}");
+
+
+            CameraManager.Instance.ShiftTo(0);
 
             //Set roles to all players
             for (var i = 0; i < playerCount; i++)
             {
-                var playerData = PlayerManager.Instance.GetPlayer((PlayerIndex)naughty);
+                var playerData = PlayerManager.Instance.Players[i];
 
                 playerData.PlayerRole = i == naughty ? PlayerRole.Naughty : PlayerRole.Saint;
-                playerData.Controller.Kill();
-
+                playerData.RespawnIndex = 0;
+                playerData.PlayerStatus = PlayerStatus.Alive;
+                playerData.Controller.Spawn(0);
             }
+        }
+
+        public void EndRound()
+        {
+            StartRound();
         }
     }
 }

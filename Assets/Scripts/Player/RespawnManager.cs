@@ -23,5 +23,15 @@ namespace Assets.Scripts.Player
         {
             return RespawnPoints.IndexOf(instance);
         }
+
+        public void Spawn(PlayerIndex playerIndex, int index)
+        {
+            var playerData = PlayerManager.Instance.GetPlayer(playerIndex);
+
+            if (playerData != null)
+            {
+                playerData.Instance.transform.position = RespawnPoints[index].GetComponent<Checkpoint>().RespawnPoint.transform.position;
+            }
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace Assets.Scripts.Player {
 
     public enum PlayerStatus {
         Dead,
-        Alive
+        Alive,
+        Finished,
     }
 
     [Serializable]
