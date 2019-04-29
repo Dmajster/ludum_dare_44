@@ -4,6 +4,8 @@
 ![Example1](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/pic1.png)
 ![Example2](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/pic2.png)
 ![Example3](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/pic3.png)
+![Example3](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/potato_crhist.png)
+
 
 
 ## LD44 link
