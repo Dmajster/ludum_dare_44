@@ -1,9 +1,9 @@
 # Ludum Dare 44
 
 ## Pics
-![Example1](https://raw.githubusercontent.com/Dmajster/ludum_dare_44/master/Screens/pic1.png)
-![Example2](https://raw.githubusercontent.com/Dmajster/ludum_dare_44/master/Screens/pic2.png)
-![Example3](https://raw.githubusercontent.com/Dmajster/ludum_dare_44/master/Screens/pic3.png)
+![Example1](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/pic1.png)
+![Example2](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/pic2.png)
+![Example3](https://media.githubusercontent.com/media/Dmajster/ludum_dare_44/master/Screens/pic3.png)
 
 
 ## LD44 link
